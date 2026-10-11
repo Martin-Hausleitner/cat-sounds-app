@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katze Soundboard</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); min-height: 100vh; margin: 0; padding: 20px; }
+  h1 { color: #e74c3c; font-size: 2.5em; margin-bottom: 10px; }
+  .subtitle { color: #555; margin-bottom: 30px; }
+  .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 0 auto; }
+  button { padding: 20px 30px; font-size: 18px; background: #3498db; color: white; border: none; border-radius: 15px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+  button:hover { background: #2980b9; transform: translateY(-2px); }
+  button:active { transform: translateY(0); }
+  .note { margin-top: 40px; color: #666; font-size: 0.9em; }
+  a { color: #e74c3c; }
+</style>
+</head>
+<body>
+  <h1>🐱 Katze Soundboard 🐱</h1>
+  <p class="subtitle">Klicke auf die Buttons, um Katzen-Sounds abzuspielen!</p>
+  <div class="buttons">
+    <button onclick="playSound('https://cdn.pixabay.com/download/audio/2022/03/10/audio_2d0a0b8a5e.mp3?filename=cat-meow-6226.mp3')">Miauen</button>
+    <button onclick="playSound('https://cdn.pixabay.com/download/audio/2025/04/02/audio_c4e5f6a7b8.mp3?filename=cat-meow-321642.mp3')">Niedliches Miauen</button>
+    <button onclick="playSound('https://assets.mixkit.co/sfx/preview/mixkit-sweet-kitty-meow-92.mp3')">Süßes Miauen</button>
+    <button onclick="playSound('https://assets.mixkit.co/sfx/preview/mixkit-cartoon-kitty-begging-meow-94.mp3')">Betteln</button>
+    <button onclick="alert('Lade einen Schnurren-Sound von SoundDino oder Pixabay und ersetze die URL')">Schnurren (Platzhalter)</button>
+    <button onclick="alert('Lade einen Fauchen-Sound und ersetze die URL')">Fauchen (Platzhalter)</button>
+  </div>
+  <p class="note">
+    Sounds sind royalty-free von Pixabay und Mixkit.<br>
+    Für mehr Sounds: Besuche <a href="https://sounddino.com/de/effects/feline/" target="_blank">SoundDino</a> oder <a href="https://pixabay.com/sound-effects/search/cat/" target="_blank">Pixabay</a>, lade MP3s herunter und ersetze die URLs in der Datei.<br>
+    Speichere diese Datei als index.html und öffne sie im Browser.
+  </p>
+  <script>
+    function playSound(url) {
+      if (url.includes('Platzhalter') || !url.startsWith('http')) {
+        alert('Bitte ersetze die Platzhalter-URLs mit echten Sound-Links.');
+        return;
+      }
+      const audio = new Audio(url);
+      audio.play().catch(err => {
+        console.error(err);
+        alert('Sound konnte nicht abgespielt werden. Möglicherweise CORS-Problem oder ungültige URL. Lade die Sounds lokal und passe den Code an.');
+      });
+    }
+  </script>
+</body>
+</html>
